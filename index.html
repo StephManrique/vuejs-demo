@@ -4,12 +4,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <link rel="stylesheet" href="index.css">
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
 
     <title>Hello, world!</title>
   </head>
@@ -22,7 +22,55 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+
         <div id="app">
+          <input type="text" placeholder="Ingrese su nombre" v-model="nombre" />
+          <input type="text" placeholder="Ingrese su apellido" v-model="apellido" /> 
+          
+          </br>
+          <br />
+          <button type="button" v-on:click="generarNumeroAlAzar()"> Generar número al azar </button>
+          <strong> Nro: {{ numero }} </strong>
+
+          <br />
+          <br />
+          <label>
+            <input type="checkbox" v-model="imagen_visible" />
+              Mostrar / Ocultar imagen
+          </label>
+          <br />
+          <img v-if="imagen_visible" src="https://vuejs.org/images/logo.png" alt="" />
+
+          <br />
+          <br />
+          <ul>
+            <li v-for="item in lista">
+              {{ item.nombre }} / {{ item.pais }}
+            </li>
+          </ul>
+
+          </br>
+          </br>
+          </br>
+
+          <h1> Lista de personajes </h1>
+          <hr />
+          <button type="button" v-on:click="created()"> Call ajax</button>
+          <ul>
+             <li v-for="item in personajes"> 
+                <h2> {{ item.nombre }} {{ item.apellido }} </h2>
+                <div class="row">
+                   <div class="span2" v-for="item2 in item.juegos">
+                      Resident evil {{ item2 }}
+                   </div>
+                </div>
+                <hr />
+             </li>
+          </ul>
+        </div>
+
+        <br />
+        <div id="app-1">
             {{ message }}
         </div>
 
